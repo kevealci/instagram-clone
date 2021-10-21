@@ -1,5 +1,6 @@
 /* eslint-disable no-plusplus */
 // NOTE: replace 'KByNdDGvxtOinIiceITFOL9Jkx03' with your Firebase auth user id (can be taken from Firebase)
+// eslint-disable-next-line
 export function seedDatabase(firebase) {
   const users = [
     {
