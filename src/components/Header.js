@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FirebaseContext from '../context/firebase';
 import UserContext from '../context/user';
 import * as ROUTES from '../constants/routes';
@@ -7,7 +7,7 @@ import * as ROUTES from '../constants/routes';
 export default function Header() {
   const { firebase } = useContext(FirebaseContext);
   const { user } = useContext(UserContext);
-  const history = useHistory();
+  // const history = useHistory();
 
   return (
     <header className="h-16 bg-white border-b border-gray-primary mb-8">
@@ -45,12 +45,12 @@ export default function Header() {
                   title="Sign Out"
                   onClick={() => {
                     firebase.auth().signOut();
-                    history.push(ROUTES.LOGIN);
+                    // history.push(ROUTES.LOGIN);
                   }}
                   onKeyDown={(event) => {
                     if (event.key === 'Enter') {
                       firebase.auth().signOut();
-                      history.push(ROUTES.LOGIN);
+                      // history.push(ROUTES.LOGIN);
                     }
                   }}
                 >
@@ -73,7 +73,7 @@ export default function Header() {
                   <Link to={`/p/${user.displayName}`}>
                     <img
                       className="rounded-full h-8 w-8 flex"
-                      src={`/images/avatars/${user.displayName}.jpg`}
+                      src={`/images/avatars/${user ? user.displayName : 'default'}.jpg`}
                       alt={`${user.displayName} profile`}
                     />
                   </Link>
@@ -81,7 +81,22 @@ export default function Header() {
               </>
             ) : (
               <>
-                <p>F</p>
+                <Link to={ROUTES.LOGIN}>
+                  <button
+                    type="button"
+                    className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8"
+                  >
+                    Log In
+                  </button>
+                </Link>
+                <Link to={ROUTES.SIGN_UP}>
+                  <button
+                    type="button"
+                    className="font-bold text-sm rounded text-blue-medium w-20 h-8"
+                  >
+                    Sign Up
+                  </button>
+                </Link>
               </>
             )}
           </div>
