@@ -12,6 +12,7 @@ export default function Header({ username }) {
             alt={`${username} profile`}
           />
         </Link>
+        <p className="font-bold">{username}</p>
       </div>
     </div>
   );

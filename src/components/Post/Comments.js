@@ -2,13 +2,14 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { formatDistance } from 'date-fns';
 import { Link } from 'react-router-dom';
+import AddComment from './AddComment';
 
 export default function Comments({ docId, comments: allComments, posted, commentInput }) {
   const [comments, setComments] = useState(allComments);
   return (
     <>
       <div className="p-4 pt-1 pb-4">
-        {comments.length >= 3 && (
+        {comments.length > 3 && (
           <p className="text-sm text-gray-base mb-1 cursor-pointer">
             View all {comments.length} comments
           </p>
@@ -25,6 +26,12 @@ export default function Comments({ docId, comments: allComments, posted, comment
           {formatDistance(posted, new Date())} ago
         </p>
       </div>
+      <AddComment
+        docId={docId}
+        comments={comments}
+        setComments={setComments}
+        commentInput={commentInput}
+      />
     </>
   );
 }
