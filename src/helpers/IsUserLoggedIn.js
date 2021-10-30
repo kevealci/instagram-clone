@@ -29,6 +29,6 @@ export default function IsUserLoggedIn({ user, loggedInPath, children, ...rest }
 
 IsUserLoggedIn.propTypes = {
   user: PropTypes.object,
-  loggedInPath: PropTypes.object,
+  loggedInPath: PropTypes.string,
   children: PropTypes.object
 };
