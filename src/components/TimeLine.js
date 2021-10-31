@@ -1,6 +1,6 @@
 import Skeleton from 'react-loading-skeleton';
 import usePhotos from '../hooks/usePhotos';
-import Post from './Post';
+import Post from './post';
 
 export default function TimeLine() {
   const { photos } = usePhotos();

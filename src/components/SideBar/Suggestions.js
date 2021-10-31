@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { getSuggestedProfiles } from '../../services/firebase';
-import SuggestedProfile from './SuggestedProfile';
+import SuggestedProfile from './suggested-profile';
 
 export default function Suggestions({ userId, following, loggedInUserDocId }) {
   const [profiles, setProfiles] = useState(null);
