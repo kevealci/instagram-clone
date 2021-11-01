@@ -21,14 +21,10 @@ export default function SignUp() {
 
     const checkUsername = await doesUsernameExist(username);
 
-    console.log(`checkUsername`, checkUsername);
-
     // If username exist checkUsername === 'false' else checkUsername === 'true'
 
     if (checkUsername) {
       try {
-        /* console.log('entre al try'); */
-
         const createdUserResult = await firebase
           .auth()
           .createUserWithEmailAndPassword(emailAddress, password);
@@ -40,15 +36,18 @@ export default function SignUp() {
         });
 
         // firebase user collection (create a document)
-        await firebase.firestore().collection('users').add({
-          userId: createdUserResult.user.uid,
-          username: username.toLowerCase(),
-          fullName,
-          emailAddress: emailAddress.toLowerCase(),
-          following: [],
-          followers: [],
-          dateCreated: Date.now()
-        });
+        await firebase
+          .firestore()
+          .collection('users')
+          .add({
+            userId: createdUserResult.user.uid,
+            username: username.toLowerCase(),
+            fullName,
+            emailAddress: emailAddress.toLowerCase(),
+            following: ['2'],
+            followers: [],
+            dateCreated: Date.now()
+          });
 
         history.push(ROUTES.DASHBOARD);
       } catch (error) {

@@ -50,7 +50,16 @@ export default function Header({
           <img
             className="rounded-full h-40 w-40 flex"
             alt={`${profileUsername} profile`}
-            src={`/images/avatars/${profileUsername}.jpg`}
+            src={`/images/avatars/${
+              profileUsername !== 'dali' &&
+              profileUsername !== 'k1' &&
+              profileUsername !== 'karl' &&
+              profileUsername !== 'orwell' &&
+              profileUsername !== 'raphael' &&
+              profileUsername !== 'steve'
+                ? 'default'
+                : profileUsername
+            }.jpg`}
           />
         ) : (
           <img

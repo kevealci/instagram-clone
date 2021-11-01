@@ -10,7 +10,16 @@ export default function User({ username, fullName }) {
       <div className="col-span-1 flex items-center justify-between ">
         <img
           className="rounded-full w-16 flex mr-3"
-          src={`/images/avatars/${username}.jpg`}
+          src={`/images/avatars/${
+            username !== 'dali' &&
+            username !== 'k1' &&
+            username !== 'karl' &&
+            username !== 'orwell' &&
+            username !== 'raphael' &&
+            username !== 'steve'
+              ? 'default'
+              : username
+          }.jpg`}
           alt=""
         />
       </div>
